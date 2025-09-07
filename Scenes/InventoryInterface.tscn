@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciby8lgwu8d4n"]
+
+[ext_resource type="Script" uid="uid://col2qghl0754f" path="res://addons/madlemur/grid_inventory/Scripts/InventoryInterface.gd" id="1_wxlco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5qmp"]
+
+[node name="InventoryInterface" type="PanelContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_j5qmp")
+script = ExtResource("1_wxlco")

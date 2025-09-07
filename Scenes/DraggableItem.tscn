@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://2djbekp4q5k1"]
+
+[ext_resource type="Script" uid="uid://cp24n6t4e0geh" path="res://addons/madlemur/grid_inventory/Scripts/ItemDrag/DraggableItem.gd" id="1_f0ukk"]
+
+[sub_resource type="Curve" id="Curve_lpp7t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g1vvk"]
+curve = SubResource("Curve_lpp7t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2xma0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+spread = 80.393
+radial_velocity_min = -90.0
+radial_velocity_max = 90.0
+gravity = Vector3(0, 10, 0)
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_g1vvk")
+hue_variation_min = -0.3
+hue_variation_max = 0.3
+
+[sub_resource type="Curve" id="Curve_4dmpb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dyljf"]
+curve = SubResource("Curve_4dmpb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_67fog"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -20, 0)
+emission_shape = 1
+emission_sphere_radius = 20.0
+angle_min = -40.0
+angle_max = 40.0
+direction = Vector3(1, 1, 1)
+spread = 180.0
+flatness = 0.18
+initial_velocity_min = 106.02
+initial_velocity_max = 106.02
+gravity = Vector3(0, 160, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_dyljf")
+hue_variation_min = -0.19
+hue_variation_max = 0.23
+
+[node name="ItemDraggable" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 56.0
+offset_bottom = 56.0
+mouse_filter = 2
+mouse_default_cursor_shape = 12
+script = ExtResource("1_f0ukk")
+id = null
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+offset_right = 56.0
+offset_bottom = 56.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="StackLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "31"
+vertical_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 64
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2xma0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_67fog")
